@@ -299,7 +299,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
 executes.
- This function is mostly useful for variables that need to be set
+This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
@@ -312,7 +312,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (defvar org-agenda-dir "" "gtd org files location")
-  (setq-default org-agenda-dir "~/org-notes")
+  (setq-default org-agenda-dir "~/org-notes/"
+                deft-dir "~/org-notes/")
   (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
   (setq org-agenda-file-gtd (expand-file-name "gtd.org" org-agenda-dir))
   (setq org-agenda-file-journal (expand-file-name "journal.org" org-agenda-dir))
@@ -334,6 +335,8 @@ you should place your code here."
           ("DONE" . (:foreground "white" :background "#3498DB" :weight bold)) 
           ("CANCELED" . (:foreground "white" :background "#ff6347" :weight blod))
           ("SUSPEND" . (:foreground "white" :background "#f0e68c" :weight blod))
+          ("RESTART" . (:foreground "white" :background "#7b68ee" :weight blod))
+          ("PLAN" . (:foreground "white" :background "#cc9966" :weight blod))
           )
    )
 
@@ -365,7 +368,7 @@ you should place your code here."
            "* %?"
            :empty-lines 1)))
   (setq org-todo-keywords
-        '((sequence "TODO(T!)" "DOING(I@/!)" "SUSPEND(S@/!)"  "|" "DONE(D!)" "CANCELED(C@/!)" ))
+        '((sequence "TODO(T!)" "DOING(I@/!)" "SUSPEND(S@/!)" "RESTART(R@/!)" "PLAN(P@/!)"  "|" "DONE(D!)" "CANCELED(C@/!)" ))
         )
 
   ;;An entry without a cookie is treated just like priority ' B '.
@@ -396,7 +399,7 @@ you should place your code here."
  '(cua-mode t nil (cua-base))
  '(package-selected-packages
    (quote
-    (helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree adaptive-wrap eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
+    (helm helm-core helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree adaptive-wrap eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
